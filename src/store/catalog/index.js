@@ -25,7 +25,7 @@ class CatalogStore extends StoreModule {
   }
 
   setActivePage(activePage) {
-    if (activePage === this.store.state.catalog.activePage) return
+    if (activePage === this.store.catalog.activePage) return
 
     this.load(activePage)
   }
