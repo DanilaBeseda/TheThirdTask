@@ -11,13 +11,7 @@ function Item({ item, onAdd }) {
       <div className='Item__title'><Link to={item._id} className='Item__link'>{item.title}</Link></div>
       <div className='Item__right'>
         <div className='Item__price'>{numberFormat(item.price)} ₽</div>
-        <button onClick={(e) => {
-          e.preventDefault()
-          onAdd(item._id)
-        }}
-        >
-          Добавить
-        </button>
+        <button onClick={() => { onAdd(item._id) }}>Добавить</button>
       </div>
     </div>
   )
