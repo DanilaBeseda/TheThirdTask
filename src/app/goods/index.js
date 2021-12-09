@@ -11,7 +11,6 @@ function Goods() {
   const { id } = useParams()
 
   useEffect(async () => {
-    console.log(store.catalog, store.goods)
     await store.goods.loadInfo(id)
   }, [id])
 
