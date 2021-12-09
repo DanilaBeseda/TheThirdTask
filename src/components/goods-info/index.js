@@ -1,16 +1,17 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import './styles.css'
 
 function GoodsInfo({ info, onAdd, id }) {
   return (
-    <div className='Info'>
-      <div className='Info__description'>{info.description}</div>
-      <div className='Info__country'>Страна производитель: <b>{`${info.maidIn?.title} (${info.maidIn?.code})`}</b></div>
-      <div className='Info__category'>Категория: <b>{info.category?.title}</b></div>
-      <div className='Indo__edition'>Год выпуска: <b>{info.edition}</b></div>
-      <div className='Info__price'><b>{`Цена: ${info.price}`}</b></div>
+    <ul className='Info'>
+      <li className='Info__description'>{info.description}</li>
+      <li className='Info__country'>Страна производитель: <b>{`${info.maidIn?.title} (${info.maidIn?.code})`}</b></li>
+      <li className='Info__category'>Категория: <b>{info.category?.title}</b></li>
+      <li className='Indo__edition'>Год выпуска: <b>{info.edition}</b></li>
+      <li className='Info__price'><b>{`Цена: ${info.price}`}</b></li>
       <button onClick={() => onAdd(id)}>Добавить</button>
-    </div>
+    </ul>
   )
 }
 

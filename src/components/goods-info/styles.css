@@ -1,0 +1,12 @@
+.Info {
+  list-style: none;
+}
+
+.Info li {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.Info__price b {
+  font-size: 24px;
+}
