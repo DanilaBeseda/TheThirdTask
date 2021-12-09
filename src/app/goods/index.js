@@ -11,13 +11,14 @@ function Goods() {
   const { id } = useParams()
 
   useEffect(async () => {
-    await store.catalog.getGoodsInfo(id)
+    console.log(store.catalog, store.goods)
+    await store.goods.loadInfo(id)
   }, [id])
 
   const select = useSelector(state => ({
     amount: state.basket.amount,
     sum: state.basket.sum,
-    info: state.catalog.info,
+    info: state.goods.info,
   }))
 
   const callbacks = {

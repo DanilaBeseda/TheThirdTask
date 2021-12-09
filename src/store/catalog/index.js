@@ -8,19 +8,17 @@ class CatalogStore extends StoreModule {
   initState() {
     return {
       items: [],
-      activePage: 1,
-      info: {},
+      activePage: 1
     };
   }
 
   /**
    * Загрузка списка товаров
    */
-  async load(activePage = 1) {
-    const response = await fetch(`/api/v1/articles?limit=10&skip=${(activePage - 1) * 10}`);
+  async load(activePage = 1, limit = 10) {
+    const response = await fetch(`/api/v1/articles?${limit}=10&skip=${(activePage - 1) * 10}`);
     const json = await response.json();
     this.setState({
-      ...this.store.getState().catalog,
       items: json.result.items,
       activePage,
     });
@@ -30,15 +28,6 @@ class CatalogStore extends StoreModule {
     if (activePage === this.store.catalog.activePage) return
 
     this.load(activePage)
-  }
-
-  async getGoodsInfo(id) {
-    const response = await fetch(`/api/v1/articles/${id}?fields=*,maidIn(title,code),category(title)`)
-    const { result } = await response.json()
-    this.setState({
-      ...this.store.getState().catalog,
-      info: result
-    })
   }
 }
 

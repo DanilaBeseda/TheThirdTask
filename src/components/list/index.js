@@ -1,15 +1,14 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './styles.css';
-import { Link } from 'react-router-dom';
 
-function List({ items, renderItem, onClose }) {
+function List({ items, renderItem }) {
   return (
     <div className='List'>
       {items.map(item =>
-        <Link to={item._id} key={item._id} className='List__item' onClick={onClose}>
+        <div key={item._id} className='List__item'>
           {renderItem(item)}
-        </Link>
+        </div>
       )}
     </div>
   );
@@ -18,7 +17,6 @@ function List({ items, renderItem, onClose }) {
 List.propTypes = {
   items: propTypes.arrayOf(propTypes.object).isRequired,
   renderItem: propTypes.func,
-  onClose: propTypes.func,
 }
 
 List.defaultProps = {
@@ -26,7 +24,6 @@ List.defaultProps = {
   renderItem: (item) => {
     return item.toString()
   },
-  onClose: () => { },
 }
 
 export default React.memo(List);
