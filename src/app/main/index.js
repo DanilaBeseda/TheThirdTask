@@ -14,6 +14,7 @@ function Main() {
     amount: state.basket.amount,
     sum: state.basket.sum,
     activePage: state.catalog.activePage,
+    count: state.catalog.count
   }));
 
   // Загрузка тестовых данных при первом рендере
@@ -39,7 +40,7 @@ function Main() {
     <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum} />
       <List items={select.items} renderItem={renders.item} />
-      <MainPagination activePage={select.activePage} setActivePage={callbacks.setActivePage} />
+      <MainPagination activePage={select.activePage} setActivePage={callbacks.setActivePage} pagesCount={Math.ceil(select.count / 10)} />
     </Layout>
   );
 }

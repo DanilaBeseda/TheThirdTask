@@ -8,7 +8,8 @@ class CatalogStore extends StoreModule {
   initState() {
     return {
       items: [],
-      activePage: 1
+      activePage: 1,
+      count: 0
     };
   }
 
@@ -16,11 +17,13 @@ class CatalogStore extends StoreModule {
    * Загрузка списка товаров
    */
   async load(activePage = 1, limit = 10) {
-    const response = await fetch(`/api/v1/articles?${limit}=10&skip=${(activePage - 1) * 10}`);
+    const response = await fetch(`/api/v1/articles?limit=${limit}&skip=${(activePage - 1) * 10}&fields=items(*),count`);
     const json = await response.json();
+
     this.setState({
       items: json.result.items,
       activePage,
+      count: json.result.count
     });
   }
 
