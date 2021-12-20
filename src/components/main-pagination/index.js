@@ -5,7 +5,6 @@ import './styles.css';
 function MainPagination({ activePage, setActivePage, pagesCount }) {
   return (
     <div className='Pages'>
-      {/* не знаю откуда брать страницы, поэтому вставил массив [1,2,3,4,5]*/}
       {Array.from({ length: pagesCount }, (_, i) => i + 1).map(item => (
         <button
           key={item}
